@@ -3,7 +3,7 @@ from benchopt import BaseSolver, safe_import_context
 with safe_import_context() as import_ctx:
     import numpy as np
     import jax.numpy as jnp
-    from jax import grad, jacfwd, jit, random, vmap
+    from jax import grad, jit, vmap
 
 
 class Solver(BaseSolver):
@@ -33,7 +33,10 @@ class Solver(BaseSolver):
 
         @jit
         def nll(W, x):
-            return jnp.log(jnp.cosh(W @ x)).sum() - jnp.log(abs(jnp.linalg.det(W)))
+            return (
+                jnp.log(jnp.cosh(W @ x)).sum() -
+                jnp.log(abs(jnp.linalg.det(W)))
+            )
 
         batched_nll = vmap(nll, in_axes=(None, 0))
 
@@ -41,7 +44,6 @@ class Solver(BaseSolver):
         def loss(W, X):
             return jnp.mean(batched_nll(W, X.T))
 
-        grad_nll = vmap(grad(nll, 0), in_axes=(None, 0))
         grad_loss = jit(grad(loss, 0))
 
         p = self.X.shape[0]
