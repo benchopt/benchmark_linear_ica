@@ -11,6 +11,9 @@ class Solver(BaseSolver):
     """FastICA."""
     name = 'fastica'
 
+    install_cmd = 'conda'
+    requirements = ['scikit-learn']
+
     def set_objective(self, X, A):
         self.X = X
         self.A = A
