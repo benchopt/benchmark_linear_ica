@@ -7,7 +7,7 @@ with safe_import_context() as import_ctx:
 
 
 class Solver(BaseSolver):
-    """PICARD."""
+    """Picard."""
     name = 'picard'
 
     install_cmd = 'conda'
