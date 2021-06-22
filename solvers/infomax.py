@@ -1,4 +1,3 @@
-import warnings
 from benchopt import BaseSolver, safe_import_context
 
 
@@ -11,8 +10,8 @@ class Solver(BaseSolver):
     """Infomax."""
     name = 'infomax'
 
-    install_cmd = 'pip'
-    requirements = ['mne']
+    install_cmd = 'conda'
+    requirements = ['pip:mne']
 
     def set_objective(self, X, A):
         self.X = X

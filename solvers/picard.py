@@ -10,8 +10,8 @@ class Solver(BaseSolver):
     """Picard"""
     name = 'picard'
 
-    install_cmd = 'pip'
-    requirements = ['python-picard']
+    install_cmd = 'conda'
+    requirements = ['pip:python-picard']
 
     def set_objective(self, X, A):
         self.X = X
