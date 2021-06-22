@@ -1,4 +1,3 @@
-import warnings
 from benchopt import BaseSolver, safe_import_context
 
 
@@ -8,15 +7,14 @@ with safe_import_context() as import_ctx:
 
 
 def logcosh(Y):
-    return np.abs(Y) + np.log1p(np.exp(-2. *np.abs(Y)))
-
+    return np.abs(Y) + np.log1p(np.exp(-2. * np.abs(Y)))
 
 
 class Solver(BaseSolver):
     """L-BFGS"""
     name = 'lbfgs'
 
-    install_cmd = 'pip'
+    install_cmd = 'conda'
     requirements = ['scipy']
 
     def set_objective(self, X, A):
