@@ -31,6 +31,7 @@ def amari_distance(W, A):
 
 class Objective(BaseObjective):
     name = "Amari Distance"
+    is_convex = False
 
     def set_data(self, A, X):
         self.A = A

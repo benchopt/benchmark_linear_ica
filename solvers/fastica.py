@@ -20,8 +20,10 @@ class Solver(BaseSolver):
 
     def run(self, n_iter):
         warnings.filterwarnings('ignore', category=ConvergenceWarning)
+        # XXX : here we fix the seed of fastica to keep it deterministic
+        # but it hides the randomness due to the initialization choice
         K, W, _ = fastica(self.X.T, max_iter=n_iter + 1, tol=1e-12,
-                          compute_sources=False)
+                          compute_sources=False, random_state=42)
         self.W = W @ K
 
     def get_result(self):
