@@ -19,7 +19,10 @@ class Solver(BaseSolver):
 
     def run(self, n_iter):
         warnings.filterwarnings('ignore', category=UserWarning)
-        K, W, _ = picard(self.X, max_iter=n_iter + 1, tol=1e-12)
+        # XXX : here we fix the seed of picard to keep it deterministic
+        # but it hides the randomness due to the initialization choice
+        K, W, _ = picard(self.X, max_iter=n_iter + 1, tol=1e-12,
+                         random_state=42)
         self.W = W @ K
 
     def get_result(self):
