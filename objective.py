@@ -30,6 +30,7 @@ def amari_distance(W, A):
 
 
 class Objective(BaseObjective):
+    min_benchopt_version = "1.3"
     name = "Amari Distance"
     is_convex = False
 
@@ -40,5 +41,5 @@ class Objective(BaseObjective):
     def compute(self, W):
         return amari_distance(W, self.A)
 
-    def to_dict(self):
+    def get_objective(self):
         return dict(X=self.X, A=self.A)
