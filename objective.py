@@ -29,12 +29,9 @@ def amari_distance(W, A):
 
 
 class Objective(BaseObjective):
-    min_benchopt_version = "1.3"
     name = "Amari Distance"
     is_convex = False
     url = "https://github.com/benchopt/benchmark_linear_ica"
-
-    requirements = ['numpy', 'scikit-learn', 'picard']
 
     min_benchopt_version = "1.7"  # could probably be relaxed
 
