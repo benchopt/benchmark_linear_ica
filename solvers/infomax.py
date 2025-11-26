@@ -1,9 +1,7 @@
-from benchopt import BaseSolver, safe_import_context
+import numpy as np
+from mne.preprocessing.infomax_ import infomax
 
-
-with safe_import_context() as import_ctx:
-    import numpy as np
-    from mne.preprocessing.infomax_ import infomax
+from benchopt import BaseSolver
 
 
 class Solver(BaseSolver):

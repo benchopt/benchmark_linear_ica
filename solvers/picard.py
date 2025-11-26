@@ -1,9 +1,8 @@
 import warnings
-from benchopt import BaseSolver, safe_import_context
 
+from picard import picard
 
-with safe_import_context() as import_ctx:
-    from picard import picard
+from benchopt import BaseSolver
 
 
 class Solver(BaseSolver):

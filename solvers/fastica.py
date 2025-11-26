@@ -1,10 +1,9 @@
 import warnings
-from benchopt import BaseSolver, safe_import_context
 
+from sklearn.decomposition import fastica
+from sklearn.exceptions import ConvergenceWarning
 
-with safe_import_context() as import_ctx:
-    from sklearn.decomposition import fastica
-    from sklearn.exceptions import ConvergenceWarning
+from benchopt import BaseSolver
 
 
 class Solver(BaseSolver):

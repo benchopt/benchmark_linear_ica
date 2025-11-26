@@ -1,9 +1,7 @@
-from benchopt import BaseSolver, safe_import_context
+import numpy as np
+from scipy.optimize import fmin_l_bfgs_b
 
-
-with safe_import_context() as import_ctx:
-    import numpy as np
-    from scipy.optimize import fmin_l_bfgs_b
+from benchopt import BaseSolver
 
 
 def logcosh(Y):

@@ -1,7 +1,6 @@
-from benchopt import BaseObjective, safe_import_context
+from benchopt import BaseObjective
 
-with safe_import_context() as import_ctx:
-    import numpy as np
+import numpy as np
 
 
 def amari_distance(W, A):
