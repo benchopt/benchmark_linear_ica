@@ -13,11 +13,14 @@ class Solver(BaseSolver):
     install_cmd = 'conda'
     requirements = ['python-picard']
 
+    sampling_strategy = 'iteration'
+
     def set_objective(self, X, A):
         self.X = X
         self.A = A
 
     def run(self, n_iter):
+
         warnings.filterwarnings('ignore', category=UserWarning)
         # XXX : here we fix the seed of picard to keep it deterministic
         # but it hides the randomness due to the initialization choice
@@ -26,4 +29,4 @@ class Solver(BaseSolver):
         self.W = W @ K
 
     def get_result(self):
-        return self.W
+        return {'W': self.W}

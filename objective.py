@@ -33,13 +33,21 @@ class Objective(BaseObjective):
     min_benchopt_version = "1.3"
     name = "Amari Distance"
     is_convex = False
+    url = "https://github.com/benchopt/benchmark_linear_ica"
+
+    requirements = ['numpy', 'scikit-learn', 'picard']
+
+    min_benchopt_version = "1.7"  # could probably be relaxed
 
     def set_data(self, A, X):
         self.A = A
         self.X = X
 
-    def compute(self, W):
-        return amari_distance(W, self.A)
+    def evaluate_result(self, W):
+        return {'value': amari_distance(W, self.A)}
+
+    def get_one_result(self):
+        return {'W': np.eye(self.A.shape[0])}
 
     def get_objective(self):
-        return dict(X=self.X, A=self.A)
+        return {'A': self.A, 'X': self.X}
