@@ -29,4 +29,4 @@ class Solver(BaseSolver):
         self.W = W @ K
 
     def get_result(self):
-        return self.W
+        return {'W': self.W}

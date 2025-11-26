@@ -13,11 +13,11 @@ class Dataset(BaseDataset):
             (10_000, 5, 0),
             (10_000, 100, 50),
             (10_000, 200, 100)
-        ]
+        ],
     }
 
     def __init__(self, n_samples=1000, n_features=2, n_gaussians=1,
-                 random_state=27):
+                 random_state=27, whiten=True):
         # Store the parameters of the dataset
         self.n_samples = n_samples
         self.n_features = n_features
@@ -31,6 +31,8 @@ class Dataset(BaseDataset):
         if self.n_gaussians:
             S[:self.n_gaussians] = rng.randn(self.n_gaussians, self.n_samples)
         X = A @ S
-        data = dict(A=A, X=X)
 
-        return (self.n_features, self.n_features), data
+        if self.whiten:
+
+
+        return dict(A=A, X=X)

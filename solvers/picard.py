@@ -13,14 +13,17 @@ class Solver(BaseSolver):
     install_cmd = 'conda'
     requirements = ['pip:python-picard']
 
+    sampling_strategy = 'iteration'
+
     def set_objective(self, X, A):
         self.X = X
         self.A = A
 
     def run(self, n_iter):
+
         warnings.filterwarnings('ignore', category=UserWarning)
         K, W, _ = picard(self.X, max_iter=n_iter + 1, tol=1e-5, ortho=False)
         self.W = W @ K
 
     def get_result(self):
-        return self.W
+        return {'W': self.W}
